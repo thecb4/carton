@@ -1,13 +1,13 @@
-# name: Build and test
+name: Build and test
 
-# on:
-#   push:
-#     # branches: [main]
-#     branches: [validate-github-action]
-#   # pull_request:
-#   #   branches: [main]
+on:
+  push:
+    # branches: [main]
+    branches: [validate-github-action]
+  # pull_request:
+  #   branches: [main]
 
-# jobs:
+jobs:
 #   catalina-swift5_2:
 #     runs-on: macos-10.15
 
