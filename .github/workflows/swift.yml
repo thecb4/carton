@@ -2,9 +2,10 @@ name: Build and test
 
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    # branches: [main]
+    branches: [validate-github-action]
+  # pull_request:
+  #   branches: [main]
 
 jobs:
   catalina-swift5_2:
