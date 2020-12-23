@@ -169,19 +169,25 @@ public class ToolchainSystem {
     terminal.write("Release = \(release)\n", inColor: .green)
 
     #if os(macOS)
+    // #debug
     terminal.write("Platform is macOS")
     let platformSuffixes = ["osx", "catalina", "macos"]
     #elseif os(Linux)
+    // #debug
     terminal.write("Platform is Linux")
     let releaseFile = AbsolutePath("etc").appending(component: "lsb-release")
+    // #debug
     terminal.write("Release file = \(releaseFile)")
     guard fileSystem.isFile(releaseFile) else {
+      // #debug
+      terminal.write("Release file is not a file")
       throw ToolchainError.unsupportedOperatingSystem
     }
 
     guard let releaseData = try? fileSystem.readFileContents(releaseFile).description else {
       fatalError("Release Data Not Available")
     }
+    // #debug
     terminal.write("Release Data = \(releaseData)")
     let ubuntuSuffix: String
     if releaseData.contains("DISTRIB_RELEASE=18.04") {

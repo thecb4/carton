@@ -1,81 +1,81 @@
-name: Build and test
+# name: Build and test
 
-on:
-  push:
-    # branches: [main]
-    branches: [validate-github-action]
-  # pull_request:
-  #   branches: [main]
+# on:
+#   push:
+#     # branches: [main]
+#     branches: [validate-github-action]
+#   # pull_request:
+#   #   branches: [main]
 
-jobs:
-  catalina-swift5_2:
-    runs-on: macos-10.15
+# jobs:
+#   catalina-swift5_2:
+#     runs-on: macos-10.15
 
-    steps:
-      - uses: actions/checkout@v2
-      - name: Build on macOS 10.15 with Swift 5.2
-        run: |
-          sudo xcode-select --switch /Applications/Xcode_11.7.app/Contents/Developer
-          swift test -c release --enable-test-discovery
-          swift build -c release
-          brew bundle
-          cd TestApp && ../.build/release/carton test
-          ../.build/release/carton test --environment defaultBrowser
-          ../.build/release/carton bundle
-        # the token is required to get around GitHub API limits when downloading the toolchain
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#     steps:
+#       - uses: actions/checkout@v2
+#       - name: Build on macOS 10.15 with Swift 5.2
+#         run: |
+#           sudo xcode-select --switch /Applications/Xcode_11.7.app/Contents/Developer
+#           swift test -c release --enable-test-discovery
+#           swift build -c release
+#           brew bundle
+#           cd TestApp && ../.build/release/carton test
+#           ../.build/release/carton test --environment defaultBrowser
+#           ../.build/release/carton bundle
+#         # the token is required to get around GitHub API limits when downloading the toolchain
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  bigsur-swift5_2:
-    runs-on: macos-11.0
+#   bigsur-swift5_2:
+#     runs-on: macos-11.0
 
-    steps:
-      - uses: actions/checkout@v2
-      - name: Build on macOS 11.0 with Swift 5.2
-        run: |
-          sudo xcode-select --switch /Applications/Xcode_11.7.app/Contents/Developer
-          swift test -c release --enable-test-discovery
-          swift build -c release
-          brew bundle
-          cd TestApp && ../.build/release/carton test
-          ../.build/release/carton test --environment defaultBrowser
-          ../.build/release/carton bundle
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#     steps:
+#       - uses: actions/checkout@v2
+#       - name: Build on macOS 11.0 with Swift 5.2
+#         run: |
+#           sudo xcode-select --switch /Applications/Xcode_11.7.app/Contents/Developer
+#           swift test -c release --enable-test-discovery
+#           swift build -c release
+#           brew bundle
+#           cd TestApp && ../.build/release/carton test
+#           ../.build/release/carton test --environment defaultBrowser
+#           ../.build/release/carton bundle
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  catalina-swift5_3:
-    runs-on: macos-10.15
+#   catalina-swift5_3:
+#     runs-on: macos-10.15
 
-    steps:
-      - uses: actions/checkout@v2
-      - name: Build on macOS 10.15 with Swift 5.3
-        run: |
-          sudo xcode-select --switch /Applications/Xcode_12.app/Contents/Developer
-          swift test -c release --enable-test-discovery
-          swift build -c release
-          brew bundle
-          cd TestApp && ../.build/release/carton test
-          ../.build/release/carton test --environment defaultBrowser
-          ../.build/release/carton bundle
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#     steps:
+#       - uses: actions/checkout@v2
+#       - name: Build on macOS 10.15 with Swift 5.3
+#         run: |
+#           sudo xcode-select --switch /Applications/Xcode_12.app/Contents/Developer
+#           swift test -c release --enable-test-discovery
+#           swift build -c release
+#           brew bundle
+#           cd TestApp && ../.build/release/carton test
+#           ../.build/release/carton test --environment defaultBrowser
+#           ../.build/release/carton bundle
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  bigsur-swift5_3:
-    runs-on: macos-11.0
+#   bigsur-swift5_3:
+#     runs-on: macos-11.0
 
-    steps:
-      - uses: actions/checkout@v2
-      - name: Build on macOS 11.0 with Swift 5.3
-        run: |
-          sudo xcode-select --switch /Applications/Xcode_12.2.app/Contents/Developer
-          swift test -c release --enable-test-discovery
-          swift build -c release
-          brew bundle
-          cd TestApp && ../.build/release/carton test
-          ../.build/release/carton test --environment defaultBrowser
-          ../.build/release/carton bundle
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#     steps:
+#       - uses: actions/checkout@v2
+#       - name: Build on macOS 11.0 with Swift 5.3
+#         run: |
+#           sudo xcode-select --switch /Applications/Xcode_12.2.app/Contents/Developer
+#           swift test -c release --enable-test-discovery
+#           swift build -c release
+#           brew bundle
+#           cd TestApp && ../.build/release/carton test
+#           ../.build/release/carton test --environment defaultBrowser
+#           ../.build/release/carton bundle
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   ubuntu18_04-swift5_3:
     runs-on: ubuntu-18.04
@@ -92,39 +92,38 @@ jobs:
           curl https://get.wasmer.io -sSfL | sh
           source /home/runner/.wasmer/wasmer.sh
           swift test -c release --enable-test-discovery
-          swift build -c release
           cd TestApp && ../.build/release/carton test
           ../.build/release/carton bundle
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  ubuntu20_04-swift5_3:
-    runs-on: ubuntu-20.04
+  # ubuntu20_04-swift5_3:
+  #   runs-on: ubuntu-20.04
 
-    steps:
-      - uses: actions/checkout@v2
-      - name: Build on Ubuntu 20.04 with Swift 5.3
-        run: |
-          mkdir -p /home/runner/.carton/sdk
-          mkdir -p /home/runner/.carton/sdk/wasm-5.3.1-RELEASE
-          ln -s /usr /home/runner/.carton/sdk/wasm-5.3.1-RELEASE/usr
-          sudo ./install_ubuntu_deps.sh
-          curl https://get.wasmer.io -sSfL | sh
-          source /home/runner/.wasmer/wasmer.sh
-          swift test -c release --enable-test-discovery
-          swift build -c release
-          cd TestApp && ../.build/release/carton test
-          ../.build/release/carton bundle
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Build on Ubuntu 20.04 with Swift 5.3
+  #       run: |
+  #         mkdir -p /home/runner/.carton/sdk
+  #         mkdir -p /home/runner/.carton/sdk/wasm-5.3.1-RELEASE
+  #         ln -s /usr /home/runner/.carton/sdk/wasm-5.3.1-RELEASE/usr
+  #         sudo ./install_ubuntu_deps.sh
+  #         curl https://get.wasmer.io -sSfL | sh
+  #         source /home/runner/.wasmer/wasmer.sh
+  #         swift test -c release --enable-test-discovery
+  #         swift build -c release
+  #         cd TestApp && ../.build/release/carton test
+  #         ../.build/release/carton bundle
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  docker_image:
-    runs-on: ubuntu-20.04
+  # docker_image:
+  #   runs-on: ubuntu-20.04
 
-    steps:
-      - uses: actions/checkout@v2
+  #   steps:
+  #     - uses: actions/checkout@v2
 
-      - name: Build a Docker image on Ubuntu 20.04
-        run: docker build . -t gchr.io/swiftwasm/swiftwasm-action:latest
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #     - name: Build a Docker image on Ubuntu 20.04
+  #       run: docker build . -t gchr.io/swiftwasm/swiftwasm-action:latest
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
