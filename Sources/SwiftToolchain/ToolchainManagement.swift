@@ -176,7 +176,9 @@ public class ToolchainSystem {
 
     // #debug
     terminal.write("Platform is Linux\n", inColor: .red)
-    let releaseFile = AbsolutePath("etc").appending(component: "lsb-release")
+    terminal.write("Going to tell you about the release file\n", inColor: .red)
+    // let releaseFile = AbsolutePath("etc").appending(component: "lsb-release")
+    let releaseFile = AbsolutePath("/etc/lsb-release")
 
     // #debug
     terminal.write("Release file = \(releaseFile)\n", inColor: .red)
