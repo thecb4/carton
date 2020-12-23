@@ -250,17 +250,16 @@ public extension XCTest {
         expected,
         errorActual + outputActual,
         file: file,
-        line: line,
-        "Expected text output differs from actual"
+        line: line
       )
     }
 
     XCTAssertEqual(
       process.terminationStatus,
       exitCode.rawValue,
+      "Non-Success Exit",
       file: file,
-      line: line,
-      "Non-Success Exit"
+      line: line
     )
   }
 
@@ -325,17 +324,16 @@ public extension XCTest {
         expected,
         errorActual + outputActual,
         file: file,
-        line: line,
-        "Expected text output differs from actual"
+        line: line
       )
     }
 
     XCTAssertEqual(
       process.terminationStatus,
       exitCode.rawValue,
+      "Non-Success Exit",
       file: file,
-      line: line,
-      "Non-Success Exit"
+      line: line
     )
   }
 }
