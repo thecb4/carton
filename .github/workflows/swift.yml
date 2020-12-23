@@ -85,14 +85,16 @@ jobs:
 
       - name: Build on Ubuntu 18.04 with Swift 5.3
         run: |
+          ls -alF ~/
           mkdir -p ~/.carton/sdk
           mkdir -p ~/.carton/sdk/wasm-5.3.1-RELEASE
           ln -s /usr ~/.carton/sdk/wasm-5.3.1-RELEASE/usr
           sudo ./install_ubuntu_deps.sh
           curl https://get.wasmer.io -sSfL | sh
           source ~/.wasmer/wasmer.sh
+          ls -alF ~/
           pwd
-          ls -alF
+          ls -alF .
           swift test -c release --enable-test-discovery --filter CartonCommandTests.SDKCommandTests/testInstall
           # swift test -c release --enable-test-discovery
           # cd TestApp && ../.build/release/carton test
