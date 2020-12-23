@@ -34,7 +34,8 @@ final class InitCommandTests: XCTestCase {
     }
   }
 
-  override func setUp() {
+  class func setup() {
+    print("Running Init Command Setup")
     AssertExecuteCommand(command: "carton sdk install", debug: true)
   }
 
