@@ -34,7 +34,9 @@ WORKDIR /home/worker/carton
 
 RUN rm -rf DerivedData && rm -rf .build && rm -rf .swiftpm
 
-RUN  swift test -c release --enable-test-discovery
+RUN swift test -c release --enable-test-discovery --filter CartonCommandTests.SDKCommandTests/testInstall
+RUN swift test -c release --enable-test-discovery --filter CartonCommandTests.InitCommandTests/testWithNoArguments
+# RUN  swift test -c release --enable-test-discovery
 
 RUN sudo mv .build/release/carton /usr/local/bin
 

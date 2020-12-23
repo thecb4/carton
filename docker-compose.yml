@@ -24,15 +24,15 @@ services:
         context: .
         dockerfile: Dockerfile.ubuntu18_04_swift5_3
       container_name: carton_ubuntu18_04-swift5_3
-      command:
-        - /bin/bash
-        - -c
-        - |
-          ls -alF
-          mkdir wasp
-          cd wasp
-          carton init --template tokamak
-          carton dev
+      # command:
+      #   - /bin/bash
+      #   - -c
+      #   - |
+      #     ls -alF
+      #     mkdir wasp
+      #     cd wasp
+      #     carton init --template tokamak
+      #     carton dev
       ports:
         - "9080:8080"
 

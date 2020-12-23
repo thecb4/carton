@@ -173,14 +173,18 @@ public class ToolchainSystem {
     terminal.write("Platform is macOS\n", inColor: .red)
     let platformSuffixes = ["osx", "catalina", "macos"]
     #elseif os(Linux)
+
     // #debug
     terminal.write("Platform is Linux\n", inColor: .red)
     let releaseFile = AbsolutePath("etc").appending(component: "lsb-release")
+
     // #debug
     terminal.write("Release file = \(releaseFile)\n", inColor: .red)
+
     guard fileSystem.isFile(releaseFile) else {
       // #debug
       terminal.write("Release file is not a file\n", inColor: .red)
+
       throw ToolchainError.unsupportedOperatingSystem
     }
 

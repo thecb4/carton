@@ -95,7 +95,8 @@ jobs:
           ls -alF ~/
           pwd
           ls -alF .
-          swift test -c release --enable-test-discovery --filter CartonCommandTests.SDKCommandTests/testInstall
+          swift test -c release --enable-test-discovery --filter CartonCommandTests.InitCommandTests/testWithNoArguments
+          # swift test -c release --enable-test-discovery --filter CartonCommandTests.SDKCommandTests/testInstall
           # swift test -c release --enable-test-discovery
           # cd TestApp && ../.build/release/carton test
           # ../.build/release/carton bundle

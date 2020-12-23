@@ -34,10 +34,10 @@ final class InitCommandTests: XCTestCase {
     }
   }
 
-  class func setup() {
-    print("Running Init Command Setup")
-    AssertExecuteCommand(command: "carton sdk install", debug: true)
-  }
+  // class func setup() {
+  //   print("Running Init Command Setup")
+  //   AssertExecuteCommand(command: "carton sdk install", debug: true)
+  // }
 
   func testWithNoArguments() throws {
     // given I've created a directory
