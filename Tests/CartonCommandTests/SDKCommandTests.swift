@@ -2,9 +2,9 @@
 import TSCBasic
 import XCTest
 
-extension InitCommandTests: Testable {}
+extension SDKCommandTests: Testable {}
 
-final class InitCommandTests: XCTestCase {
+final class SDKCommandTests: XCTestCase {
   func testInstall() {
     AssertExecuteCommand(command: "carton sdk install", debug: true)
   }
