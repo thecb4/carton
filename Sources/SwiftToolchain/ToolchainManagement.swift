@@ -249,6 +249,8 @@ public class ToolchainSystem {
     if let specURL = specURL {
       downloadURL = specURL
     } else if let inferredURL = try inferDownloadURL(from: swiftVersion, client, terminal) {
+      // #debug
+      terminal.write("The Swift version \(swiftVersion) was found\n", inColor: .red)
       downloadURL = inferredURL
     } else {
       terminal.write("The Swift version \(swiftVersion) was not found\n", inColor: .red)

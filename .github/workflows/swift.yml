@@ -91,6 +91,8 @@ jobs:
           sudo ./install_ubuntu_deps.sh
           curl https://get.wasmer.io -sSfL | sh
           source ~/.wasmer/wasmer.sh
+          cwd
+          ls -alF
           swift test -c release --enable-test-discovery --filter CartonCommandTests.SDKCommandTests/testInstall
           # swift test -c release --enable-test-discovery
           # cd TestApp && ../.build/release/carton test
