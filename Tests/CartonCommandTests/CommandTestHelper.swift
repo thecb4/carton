@@ -250,11 +250,18 @@ public extension XCTest {
         expected,
         errorActual + outputActual,
         file: file,
-        line: line
+        line: line,
+        "Expected text output differs from actual"
       )
     }
 
-    XCTAssertEqual(process.terminationStatus, exitCode.rawValue, file: file, line: line)
+    XCTAssertEqual(
+      process.terminationStatus,
+      exitCode.rawValue,
+      file: file,
+      line: line,
+      "Non-Success Exit"
+    )
   }
 
   func AssertExecuteCommand(
@@ -318,7 +325,8 @@ public extension XCTest {
         expected,
         errorActual + outputActual,
         file: file,
-        line: line
+        line: line,
+        "Expected text output differs from actual"
       )
     }
 
